@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from collections import deque as dq
 
@@ -106,4 +107,5 @@ def bcheck(ind, bname):
     return branches[(ind * len(att)) + mp[bname]]
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # default to 5000 for local dev
+    app.run(host="0.0.0.0", port=port)
