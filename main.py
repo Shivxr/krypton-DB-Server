@@ -62,9 +62,12 @@ def search(uid):
 
 @app.route('/delete/<int:uid>', methods=['DELETE'])
 def delete(uid):
+    global k_id
     global branches
     i = uid * len(att)
-    branches.pop(i)
+    for q in range(len(att)):
+        branches.pop(i)
+    k_id-=1
     return jsonify({"message": "Data deleted successfully"}), 200
 
 @app.route('/scan', methods=['GET'])
